@@ -1,0 +1,100 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="school_subject_tree">
+            <field name="name">school.subject.tree_view</field>
+            <field name="model">school.subject</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="total_hours"/>
+<!--                     <field name="teacher_ids"/>-->
+                </tree>
+            </field>
+        </record>
+<!--        <record id="subject_kanban" model="ir.ui.view">-->
+<!--            <field name="name">subject.kanban</field>-->
+<!--            <field name="model">school.subject</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--               <kanban>-->
+<!--                 <field name="id"/>-->
+<!--                 <field name="image"/>-->
+<!--                <field name="name"/>-->
+<!--                <field name="teacher_ids"/>-->
+<!--                <field name="phone_number"/>-->
+<!--                <field name="class_id"/>-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_school_teacher_kanban">-->
+<!--                            <t t-if="record.image.raw_value">-->
+<!--                                <div class="o_kanban_image_fill_left d-none d-md-block"-->
+<!--                                     t-attf-style="background-image:url('#{kanban_image('school.subject', 'image', record.id.raw_value)}')"/>-->
+<!--                            </t>-->
+<!--                            <t t-else="">-->
+<!--                                <img class="o_kanban_image" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"'/>-->
+<!--                            </t>-->
+<!--                            <div class="oe_kanban_details">-->
+<!--                                <strong class="oe_title"><field name="name"/></strong>-->
+<!--                                <div class="o_kanban_tags_section"/>-->
+<!--                                <ul>-->
+<!--                                    <li>Teachers : <field name="teacher_ids"/></li>-->
+<!--                                    <li>Phone : <field name="phone_number"/></li>-->
+<!--                                    <li>Class :<strong class="oe_title"><field name="name"/></strong></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="subject_form" model="ir.ui.view">
+            <field name="name">subject.form</field>
+            <field name="model">school.subject</field>
+            <field name="arch" type="xml">
+                <form string="Subject">
+                    <sheet>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" />
+                                </h1>
+                            </div>
+
+
+                        </group>
+                        <group>
+                            <field name="total_hours"/>
+                        </group>
+<!--                        <group>-->
+<!--                            <field name="teacher_ids" widget="many2many_tags"/>-->
+<!--                        </group>-->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_subject" model="ir.actions.act_window">
+            <field name="name">Subject</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.subject</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name="context">{"search_default_male":1}</field>-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a first Subject
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="school_subject" name="Subjects" parent="school_root" action="action_subject" sequence="5"/>
+    </data>
+</odoo>

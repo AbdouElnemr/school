@@ -1,0 +1,94 @@
+<odoo>
+    <data>
+
+<!--        <record id="create_teacher_form" model="ir.ui.view">-->
+<!--            <field name="name">create.appointment.form</field>-->
+<!--            <field name="model">school.teacher</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Create Appointment">-->
+<!--                    <group>-->
+<!--                        <field name="name"/>-->
+<!--                    </group>-->
+<!--                    <group>-->
+<!--                        &lt;!&ndash;                        <field name/>&ndash;&gt;-->
+<!--                    </group>-->
+<!--                    <footer>-->
+<!--                        &lt;!&ndash;                        <button name="print_repo_wizard" string="Print" class="oe_highlight" type="object"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <button name="create_appointment" string="Submit" type="object" class="btn-primary"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <button name="get_data" string="Get Data " type="object" class="btn-primary"/>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <button name="delete_patient" type="object" class="oe_highlight"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                                string="Delete Patient"/>&ndash;&gt;-->
+<!--                        <button string="Cancel" class="btn-secondary" special="cancel"/>-->
+<!--                    </footer>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="create_student_form" model="ir.ui.view">
+            <field name="name">create.student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form string="Student Report">
+                    <group>
+                        <field name="teacher_ids" widget="many2many_tags"/>
+                    </group>
+
+                    <footer>
+                        <button name="create_student_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+<!--        <record id="create_class_form" model="ir.ui.view">-->
+<!--            <field name="name">create.appointment.form</field>-->
+<!--            <field name="model">school.class</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Classes Report">-->
+<!--                    <group>-->
+<!--                        <field name="teacher_ids" widget="many2many_tags"/>-->
+<!--                        <field name="student_ids" widget="many2many_tags"/>-->
+<!--                    </group>-->
+
+<!--                    <footer>-->
+<!--                         <button name="create_class_report" string="Print" type="object" class="btn-primary"/>-->
+<!--                        <button string="Cancel" class="btn-secondary" special="cancel"/>-->
+<!--                    </footer>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="action_teacher_wizard" model="ir.actions.act_window">-->
+<!--            <field name="name">Teachers Report</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">school.teacher</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref="create_teacher_form"/>-->
+<!--            <field name="target">new</field>-->
+<!--        </record>-->
+        <record id="action_student_wizard" model="ir.actions.act_window">
+            <field name="name">Students Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_student_form"/>
+            <field name="target">new</field>
+        </record>
+<!--        <record id="action_classes_wizard" model="ir.actions.act_window">-->
+<!--            <field name="name">Classes Report</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">school.class</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref="create_class_form"/>-->
+<!--            <field name="target">new</field>-->
+<!--        </record>-->
+
+
+<!--        <menuitem id="school_teachers_Reports" name="Teachers Reports" parent="school_Reports"-->
+<!--                  action="action_teacher_wizard" sequence="1"/>-->
+        <menuitem id="school_students_Reports" name="Students Reports" parent="school_Reports"
+                  action="action_student_wizard" sequence="2"/>
+<!--        <menuitem id="school_classes_Reports" name="Classes Reports" parent="school_Reports"-->
+<!--                  action="action_classes_wizard" sequence="3"/>-->
+
+    </data>
+</odoo>

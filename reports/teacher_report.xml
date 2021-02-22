@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="print_teacher_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+
+                    <div class="header" title="header">
+                        <div class="row">
+                            <div class="col-2"
+                                 style="padding: 0.1cm;">
+                                <div style="text-align:center;">
+                                    <img src="o.image" align="center" width="100" height="100"
+                                         style="margin:0;" alt="Student Picture"/>
+                                </div>
+                            </div>
+                            <div class="col-6"
+                                 style=" padding: 0.1cm;">
+                                <p align="center" style="margin-top: 0.5cm; font-size:22pt;">
+                                    <font face="KacstOne">
+                                        <span class="text-center" lang="hi-IN">
+                                            استماره بيانات المدرس
+                                        </span>
+                                        <span class="text-right" lang="hi-IN">
+                                            <!--                                        <t t-esc="date"/>-->
+                                        </span>
+                                        <span class="text-right" lang="hi-IN">
+                                            <!--                                        <t t-esc="status_name"/>-->
+                                        </span>
+                                    </font>
+                                </p>
+                                <p align="right" style="margin-top: 0.5cm; font-size:22pt;">
+                                    <font face="KacstOne">
+                                        <span class="text-right" lang="hi-IN">
+
+                                        </span>
+                                        <span class="text-right" lang="hi-IN">
+
+                                        </span>
+                                        <span class="text-right" lang="hi-IN">
+
+                                        </span>
+                                    </font>
+                                </p>
+
+                            </div>
+                            <div class="col-4"
+                                 style=" padding: 0.1cm;  font-size:22pt;">
+                                <p align="right">
+                                    <font face="KacstOne">
+                                        <span class="text-right" lang="hi-IN">
+                                            وزاره التربيه والتعليم
+                                        </span>
+                                    </font>
+                                    <br/>
+                                    <font face="KacstOne">
+                                        <span class="text-center" lang="hi-IN">
+                                            اداره القاهره التعليميه
+                                        </span>
+                                    </font>
+                                    <br/>
+                                    <font face="KacstOne">
+                                        <span class="text-center" lang="hi-IN">
+                                            مدرسه الاورمان الثانويه
+                                        </span>
+                                    </font>
+
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <body lang="en-GB" dir="rtl">
+                        <table width="100%" cellpadding="4" class="table table-condensed"
+                               style="border:2px solid black;"
+                               cellspacing="0" dir="rtl">
+                            <thead style="color:#000; background-color:#CCC; font-size:20px;">
+                                <tr>
+                                    <th class="text-center" style="border:2px solid black;">الاسم</th>
+                                    <th class="text-center" style="border:2px solid black;">رقم الهاتف</th>
+                                    <th class="text-center" style="border:2px solid black;">المواد الدراسية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <!--                            <t t-foreach="data_lines" t-as="line">-->
+                                <tr valign="top">
+                                    <td class="text-center m-auto"
+                                        style="border: 2px solid black !important; padding: 0.1cm;">
+                                        <p class="text-center m-auto" style="font-weight:600; font-size:15pt;"
+                                           align="center">
+                                            <t t-esc="o.name"/>
+                                        </p>
+                                    </td>
+                                    <td class="text-center m-auto"
+                                        style="border: 2px solid black !important; padding: 0.1cm;">
+                                        <p class="text-center m-auto" style="font-weight:600; font-size:15pt;"
+                                           align="center">
+                                                 <t t-esc="o.phone_number"/>
+                                         </p>
+                                    </td>
+                                    <td class="text-center m-auto"
+                                        style="border: 2px solid black !important; padding: 0.1cm;">
+                                        <p class="text-center m-auto" style="font-weight:600; font-size:15pt;"
+                                           align="center">
+<!--                                            <t t-esc="o.subject"/>-->
+                                        </p>
+                                    </td>
+
+
+                                </tr>
+                                <!--                            </t>-->
+                            </tbody>
+                        </table>
+                    </body>
+                    <div class="footer">
+                        <div class="row mt-2">
+                            <p style="text-align:center; font-size:15pt; font-weight:600;" class="col-4">يعتمد</p>
+                            <p style="text-align:center; font-size:15pt; font-weight:600;" class="col-4">توقيع المختص</p>
+                            <p style="text-align:center; font-size:15pt; font-weight:600;" class="col-4">المراجعة</p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="print_teacher_report_paperformat" model="report.paperformat">
+        <field name="name">estimated costs report</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">420</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">50</field>
+        <field name="margin_bottom">30</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">40</field>
+        <field name="dpi">100</field>
+    </record>
+
+    <report
+            id="teacher_report_print"
+            string='Teacher Report'
+            model="school.teacher"
+            report_type="qweb-pdf"
+            file="school.teacher_report"
+            name="school.print_teacher_report"
+            paperformat="print_teacher_report_paperformat"
+            menu="True"
+    />
+</odoo>
