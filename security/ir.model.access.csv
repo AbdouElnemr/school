@@ -3,3 +3,4 @@ access_school_teacher,teacher,model_school_teacher,,1,1,1,1
 access_school_student,student,model_school_student,,1,1,1,1
 access_school_classes,classes,model_school_class,,1,1,1,1
 access_school_subject,subject,model_school_subject,,1,1,1,1
+access_school_task,task,model_school_task,,1,1,1,1

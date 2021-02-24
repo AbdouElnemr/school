@@ -96,9 +96,7 @@
                                 <field name="line_ids" nolabel="1">
                                     <tree editable="bottom">
                                         <field name="sequence"/>
-                                        <field name="arabic"/>
-                                        <field name="math"/>
-                                        <field name="english"/>
+                                        <field name="name"/>
                                     </tree>
                                 </field>
                             </page>

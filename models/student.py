@@ -15,7 +15,7 @@ class Student(models.Model):
     birth_date = fields.Date(string="Birth Date", required=False, )
     teacher_ids = fields.Many2many(comodel_name="school.teacher", string="Teacher", required=True, )
     class_id = fields.Many2one(comodel_name="school.class", string="Class", required=True, )
-    line_ids = fields.Many2many(comodel_name="school.subject",  string="Subject Lines", )
+    line_ids = fields.Many2one(comodel_name="school.subject",  string="Subject Lines", )
 
     #
     # @api.multi

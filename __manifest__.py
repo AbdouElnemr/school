@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/student.xml',
         'views/classes.xml',
+        'views/task.xml',
         # 'views/subject.xml',
         'views/templates.xml',
 

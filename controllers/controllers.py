@@ -90,11 +90,12 @@ class Hospital(http.Controller):
         patients_rec = request.env['school.teacher'].search([])
         teachers = []
         for rec in patients_rec:
+            print("rec.image", type(rec.image))
             vals = {
                 'id': rec.id,
                 # 'patient_id': rec.name_seq,
                 'name': rec.name,
-                # 'age': rec.patient_age,
+                'image': rec.image,
                 # 'doctor': rec.doctor_id.doctor_name
             }
             teachers.append(vals)

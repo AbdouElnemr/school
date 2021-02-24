@@ -9,13 +9,13 @@ class Subject(models.Model):
     _description = "subject record"
 
     sequence = fields.Integer(string="Sequence", )
-    arabic = fields.Float(string="arabic", )
-    english = fields.Float("english")
-    math = fields.Float(string="math", )
+    name = fields.Float(string="Subject Name", )
+    # english = fields.Float("english")
+    # math = fields.Float(string="math", )
 
-    @api.onchange("arabic")
-    def on_ar_change(self):
-        self.arabic = 0.0
+    # @api.onchange("arabic")
+    # def on_ar_change(self):
+    #     self.arabic = 0.0
 
     # teacher_ids = fields.Many2many(comodel_name="school.teacher", string="Teacher", required=True, )
     #
