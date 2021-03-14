@@ -9,6 +9,7 @@
                 <tree>
                     <field name="name"/>
                     <field name="phone_number"/>
+                    <field name="subject_id"/>
 
                 </tree>
             </field>
@@ -22,7 +23,7 @@
                     <field name="id"/>
                     <field name="image"/>
                     <field name="name"/>
-<!--                    <field name="subjects"/>-->
+                    <!--                    <field name="subjects"/>-->
                     <field name="phone_number"/>
                     <templates>
                         <t t-name="kanban-box">
@@ -33,7 +34,7 @@
                                 </t>
                                 <t t-else="">
                                     <img class="o_kanban_image" alt="Avatar"
-                                         t-att-src='_s + "/base/static/img/avatar.png"'/>
+                                         t-att-src='_s + "/school/static/src/img/avatar.jpg"'/>
                                 </t>
                                 <div class="oe_kanban_details">
                                     <strong class="oe_title">
@@ -42,7 +43,7 @@
                                     <div class="o_kanban_tags_section"/>
                                     <ul>
                                         <li>Subject :
-<!--                                             <field name="subject_id" widget="many2one_tags"/>-->
+                                            <field name="subject_id" widget="many2one_tags"/>
                                         </li>
                                         <li>Phone :
                                             <field name="phone_number"/>
@@ -63,19 +64,17 @@
                 <form string="Teachers">
                     <sheet>
                         <group>
-                            <field name="image" widget="image" class="oe_avatar"/>
+                            <group>
+                                <field name="image" widget="image" class="oe_avatar"/>
+                            </group>
                         </group>
-                        <group>
-                            <div class="oe_title">
-                                <h1>
-                                    <field name="name"/>
-                                </h1>
-                            </div>
 
+                        <group>
+                            <field name="name"/>
                         </group>
                         <group>
                             <field name="phone_number"/>
-<!--                            <field name="subject_id" widget="many2one_tags"/>-->
+                            <field name="subject_id" widget="many2one_tags"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -87,12 +86,18 @@
             </field>
         </record>
 
+        <!--        <record id="action_analytic_default_list" model="ir.actions.act_window">-->
+        <!--            <field name="name">Analytic Defaults Rules</field>-->
+        <!--            <field name="res_model">account.analytic.default</field>-->
+        <!--            <field name="view_mode">tree,kanban,form</field>-->
+        <!--            <field name="search_view_id" ref="view_account_analytic_default_form_search"/>-->
+        <!--            <field name="context">{"search_default_current":1}</field>-->
+        <!--        </record>-->
+
 
         <record id="action_teacher" model="ir.actions.act_window">
             <field name="name">Teacher</field>
-            <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.teacher</field>
-            <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <!--            <field name="context">{"search_default_male":1}</field>-->
             <field name="help" type="html">

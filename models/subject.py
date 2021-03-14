@@ -9,15 +9,13 @@ class Subject(models.Model):
     _description = "subject record"
 
     sequence = fields.Integer(string="Sequence", )
-    name = fields.Float(string="Subject Name", )
-    # english = fields.Float("english")
-    # math = fields.Float(string="math", )
+    name = fields.Char(string="Subject Name", )
+    # teacher_ids = fields.Many2one("school.teacher", string="Teacher", )
 
     # @api.onchange("arabic")
     # def on_ar_change(self):
     #     self.arabic = 0.0
 
-    # teacher_ids = fields.Many2many(comodel_name="school.teacher", string="Teacher", required=True, )
     #
     # @api.multi
     # def create_student_report(self):

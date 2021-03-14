@@ -17,12 +17,12 @@ class WebsiteSaleInherit(WebsiteSale):
 
 
 class Hospital(http.Controller):
-    @http.route('/school/teachers/', website=True, auth='public')
-    def index(self, **kw):
-        patients = request.env['school.teacher'].sudo().search([])
-        return request.render("om_school.patients_page", {
-            'patient': patients,
-        })
+    # @http.route('/school/teachers/', website=True, auth='public')
+    # def index(self, **kw):
+    #     patients = request.env['school.teacher'].sudo().search([])
+    #     return request.render("om_school.patients_page", {
+    #         'patient': patients,
+    #     })
 
     @http.route('/web/session/authenticate', type="json", auth='none')
     def authenticate(self, db, login, password, base_location=None):
@@ -42,23 +42,23 @@ class Hospital(http.Controller):
                     </div>
                     """
         }
-
-    @http.route('/create_patient', type="json", auth='user', )
-    def create_patient(self, **rec):
-        if request.jsonrequest:
-            if rec['name']:
-                vals = {
-                    'patient_name': rec['name'],
-                    'patient_age': rec['age'],
-                    'doctor_id': rec['doctor'],
-                }
-                new_patient = request.env['school.patient'].sudo().create(vals)
-                args = {
-                    'meaasge': 'success',
-                    'success': 'True',
-                    'id': new_patient.id,
-                }
-        return args
+    #
+    # @http.route('/create_patient', type="json", auth='user', )
+    # def create_patient(self, **rec):
+    #     if request.jsonrequest:
+    #         if rec['name']:
+    #             vals = {
+    #                 'patient_name': rec['name'],
+    #                 'patient_age': rec['age'],
+    #                 'doctor_id': rec['doctor'],
+    #             }
+    #             new_patient = request.env['school.patient'].sudo().create(vals)
+    #             args = {
+    #                 'meaasge': 'success',
+    #                 'success': 'True',
+    #                 'id': new_patient.id,
+    #             }
+    #     return args
 
     @http.route('/update_patient', type="json", auth='user', )
     def update_patient(self, **rec):
@@ -86,17 +86,15 @@ class Hospital(http.Controller):
 
     @http.route('/get_teachers', type="json", auth='public', csrf=False )
     def get_all_teachers(self):
-        # get all patients
-        patients_rec = request.env['school.teacher'].search([])
+        # get all teachers
+        teachers_rec = request.env['school.teacher'].search([])
         teachers = []
-        for rec in patients_rec:
+        for rec in teachers_rec:
             print("rec.image", type(rec.image))
             vals = {
                 'id': rec.id,
-                # 'patient_id': rec.name_seq,
                 'name': rec.name,
                 'image': rec.image,
-                # 'doctor': rec.doctor_id.doctor_name
             }
             teachers.append(vals)
         data = {
@@ -105,7 +103,6 @@ class Hospital(http.Controller):
             'response': teachers,
         }
         return data
-
 
     @http.route('/get_students', type="json", auth='user', )
     def get_all_students(self):
@@ -131,8 +128,3 @@ class Hospital(http.Controller):
         }
         return data
 
-    # @http.route('/om_school/om_school/objects/<model("om_school.om_school"):obj>/', auth='public')
-    # def object(self, obj, **kw):
-    #     return http.request.render('om_school.object', {
-    #         'object': obj
-    #     })

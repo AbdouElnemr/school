@@ -13,6 +13,6 @@ class Classes(models.Model):
     teacher_ids = fields.Many2many(comodel_name="school.teacher", string="Teachers", required=False, )
     # student_ids = fields.Many2many(comodel_name="school.student", string="Students", required=False, )
 
-    @api.multi
-    def create_class_report(self):
-        print("create_class_report")
+    # @api.multi
+    # def create_class_report(self):
+    #     print("create_class_report")

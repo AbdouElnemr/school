@@ -115,10 +115,8 @@
 
         <record id="action_student" model="ir.actions.act_window">
             <field name="name">Student</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">school.student</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
+             <field name="res_model">school.student</field>
+             <field name="view_mode">kanban,tree,form</field>
             <!--            <field name="context">{"search_default_male":1}</field>-->
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">

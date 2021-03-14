@@ -3,13 +3,13 @@
         <!-- explicit list view definition -->
 
         <record model="ir.ui.view" id="school_subject_tree">
-            <field name="name">school.subject.tree_view</field>
+            <field name="name">school_subject_tree_view</field>
             <field name="model">school.subject</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="total_hours"/>
-<!--                     <field name="teacher_ids"/>-->
+                    <!--                    <field name="total_hours"/>-->
+                    <!--                     <field name="teacher_ids"/>-->
                 </tree>
             </field>
         </record>
@@ -20,17 +20,11 @@
                 <form string="Subject">
                     <sheet>
                         <group>
-                            <div class="oe_title">
-                                <h1>
-                                    <field name="name" />
-                                </h1>
-                            </div>
-
-
+                            <field name="name"/>
                         </group>
-                        <group>
-                            <field name="total_hours"/>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name="teacher_ids" widget="many2one_tags"/>-->
+<!--                        </group>-->
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -44,9 +38,7 @@
 
         <record id="action_subject" model="ir.actions.act_window">
             <field name="name">Subject</field>
-            <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.subject</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <!--            <field name="context">{"search_default_male":1}</field>-->
             <field name="help" type="html">
