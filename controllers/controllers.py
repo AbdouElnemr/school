@@ -43,25 +43,9 @@ class Hospital(http.Controller):
                     """
         }
     #
-    # @http.route('/create_patient', type="json", auth='user', )
-    # def create_patient(self, **rec):
-    #     if request.jsonrequest:
-    #         if rec['name']:
-    #             vals = {
-    #                 'patient_name': rec['name'],
-    #                 'patient_age': rec['age'],
-    #                 'doctor_id': rec['doctor'],
-    #             }
-    #             new_patient = request.env['school.patient'].sudo().create(vals)
-    #             args = {
-    #                 'meaasge': 'success',
-    #                 'success': 'True',
-    #                 'id': new_patient.id,
-    #             }
-    #     return args
 
-    @http.route('/update_patient', type="json", auth='user', )
-    def update_patient(self, **rec):
+    @http.route('/update_teacher', type="json", auth='user', )
+    def update_teacher(self, **rec):
         if request.jsonrequest:
             if rec['id']:
                 data = {}
@@ -84,6 +68,27 @@ class Hospital(http.Controller):
     def destroy(self):
         request.session.logout()
 
+    @http.route('/create_teacher', type="json", auth='public', )
+    def create_patient(self, **rec):
+        if request.jsonrequest:
+            if rec['name']:
+                vals = {
+                    'name': rec['name'],
+                    'phone_number': rec['phone_number'],
+                    'subject_id': rec['subject_id'],
+                }
+                new_teacher = request.env['school.teacher'].sudo().create(vals)
+                args = {
+                    'meaasge': 'success',
+                    'success': 'True',
+                    'data':
+                        {
+                            'id': new_teacher.id,
+                            'name': new_teacher.name
+                         },
+                }
+        return args
+
     @http.route('/get_teachers', type="json", auth='public', csrf=False )
     def get_all_teachers(self):
         # get all teachers
@@ -94,6 +99,8 @@ class Hospital(http.Controller):
             vals = {
                 'id': rec.id,
                 'name': rec.name,
+                'subject': rec.subject_id.name,
+                'phone': rec.phone_number,
                 'image': rec.image,
             }
             teachers.append(vals)
@@ -104,7 +111,7 @@ class Hospital(http.Controller):
         }
         return data
 
-    @http.route('/get_students', type="json", auth='user', )
+    @http.route('/get_students', type="json", auth='public',csrf=False )
     def get_all_students(self):
         # get all patients
         students_rec = request.env['school.student'].search([])
