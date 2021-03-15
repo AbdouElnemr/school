@@ -55,6 +55,15 @@ public class GetTeachersModel {
         @SerializedName("name")
         @Expose
         private String name;
+
+        @SerializedName("subject")
+        @Expose
+        private String subject;
+
+        @SerializedName("phone")
+        @Expose
+        private String phone;
+
         @SerializedName("image")
         @Expose
         private String image;
@@ -69,6 +78,12 @@ public class GetTeachersModel {
 
         public String getName() {
             return name;
+        }
+        public String getSubject() {
+            return subject;
+        }
+        public String getPhone() {
+            return phone;
         }
         public String getImage() {
             return image;

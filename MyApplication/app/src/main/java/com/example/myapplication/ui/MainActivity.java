@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements AllRequestsAPI.On
         setContentView(R.layout.activity_main);
 //        txt_view = findViewById(R.id.txt_view);
 
+//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        getSupportActionBar().setCustomView(R.menu.toolbar);
+
         recyclerView = findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -39,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements AllRequestsAPI.On
         HashMap<String, List<String>> map = new HashMap<>();
         map.put("params", newList);
         new AllRequestsAPI(this).getAllTeachers(map);
-
     }
 
 

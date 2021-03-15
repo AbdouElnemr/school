@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    card_view:cardElevation="20dp"
     card_view:cardCornerRadius="15dp"
+    card_view:cardElevation="20dp"
     card_view:contentPadding="20dp">
 
     <RelativeLayout
@@ -13,27 +13,60 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image"
-            app:civ_border_color="#0F08EC"
-            app:civ_border_width="2dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/kprogresshud_spinner" />
+            android:src="@drawable/kprogresshud_spinner"
+            app:civ_border_color="#0F08EC"
+            app:civ_border_width="1dp" />
 
-
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image"
-            android:layout_centerHorizontal="true"
-            android:linksClickable="true"
-            android:text="https://abhiandroid.com"
-            android:textColor="#000"
-            android:textSize="20sp" />
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:linksClickable="true"
+                android:text="test"
+                android:textColor="#494747"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/phone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:linksClickable="true"
+                android:gravity="center"
+                android:text="test"
+                android:textColor="#494747"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/subject_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:linksClickable="true"
+                android:gravity="center"
+                android:text="test"
+                android:textColor="#494747"
+                android:textSize="20sp" />
+        </LinearLayout>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
 

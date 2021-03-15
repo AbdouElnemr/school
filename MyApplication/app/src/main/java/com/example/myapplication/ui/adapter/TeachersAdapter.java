@@ -36,12 +36,14 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
     private List<GetTeachersModel.Response> albumList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView info_text;
+        public TextView name_text, phone_text, subject_text;
         public CircleImageView imageView;
 
         public MyViewHolder(View view) {
             super(view);
-            info_text = view.findViewById(R.id.info_text);
+            name_text = view.findViewById(R.id.name_text);
+            phone_text = view.findViewById(R.id.phone_text);
+            subject_text = view.findViewById(R.id.subject_text);
             imageView = view.findViewById(R.id.image);
 
 
@@ -66,11 +68,13 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.MyView
     @Override
     public void onBindViewHolder(final TeachersAdapter.MyViewHolder holder, int position) {
         GetTeachersModel.Response service = albumList.get(position);
-        holder.info_text.setText(service.getName());
+        holder.name_text.setText(service.getName());
+        holder.phone_text.setText(service.getPhone());
+        holder.subject_text.setText(service.getSubject());
 
 
         if(service.getImage().equals("false")){
-            holder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_launcher_background));
+            holder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.avatar));
         }else {
             Log.d("RRRRRRRRRREEEEEEEEEE", service.getImage());
             byte[] decodedString = Base64.decode(service.getImage().trim(), Base64.DEFAULT);
